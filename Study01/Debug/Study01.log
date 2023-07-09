@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\허지욱\source\repos\Study01\Study01\main.cpp(13,9): warning C4101: 'numberToChange' :참조되지 않은 지역 변수입니다.
+  Study01.vcxproj -> C:\Users\허지욱\source\repos\Study01\Debug\Study01.exe
