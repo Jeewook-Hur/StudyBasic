@@ -29,10 +29,11 @@ MyString::~MyString() {
 }
 
 MyString& MyString::assign(const MyString& str) {
-	if (str.stringLength > stringLength) {
+	if (str.stringLength > memoryCapacity) {
 		delete[] stringContent;
+		stringContent = new char[str.stringLength];
+		memoryCapacity = str.stringLength;
 	}
-	stringContent = new char[str.stringLength];
 	for (int i = 0; i < str.stringLength; i++) {
 		stringContent[i] = str.stringContent[i];
 	}
@@ -42,9 +43,10 @@ MyString& MyString::assign(const MyString& str) {
 
 MyString& MyString::assign(const char* str) {
 	int length = strlen(str);
-	if (length > stringLength) {
+	if (length > memoryCapacity) {
 		delete[] stringContent;
 		stringContent = new char[length];
+		memoryCapacity = length;
 	}
 	for (int i = 0; i < length; i++) {
 		stringContent[i] = str[i];

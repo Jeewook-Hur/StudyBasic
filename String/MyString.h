@@ -18,6 +18,7 @@ public:
 private:
 	char* stringContent;
 	int stringLength;
+	int memoryCapacity;
 };
 
 #endif // !_MYSTRING_H
