@@ -7,6 +7,10 @@ public:
 	MyString(const char* str);
 	MyString(const MyString& str);
 	~MyString();
+
+	MyString& assign(const MyString& str);
+	MyString& assign(const char* str);
+
 	int length() const;
 	void print() const;
 	void println() const;

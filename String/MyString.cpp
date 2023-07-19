@@ -5,42 +5,68 @@
 using namespace std;
 
 MyString::MyString(char c) {
-	this->stringContent = new char[1];
-	this->stringContent[0] = c;
-	this->stringLength = 1;
+	stringContent = new char[1];
+	stringContent[0] = c;
+	stringLength = 1;
 }
 MyString::MyString(const char* str) {
-	this->stringLength = strlen(str);
-	this->stringContent = new char[this->stringLength];
-	for (int i = 0; i < this->stringLength; i++) {
-		this->stringContent[i] = str[i];
+	stringLength = strlen(str);
+	stringContent = new char[stringLength];
+	for (int i = 0; i < stringLength; i++) {
+		stringContent[i] = str[i];
 	}
 }
 MyString::MyString(const MyString& str) {
-	this->stringLength = str.stringLength;
-	this->stringContent = new char[this->stringLength];
-	for (int i = 0; i != this->stringLength; i++) {
-		this->stringContent[i] = str.stringContent[i];
+	stringLength = str.stringLength;
+	stringContent = new char[stringLength];
+	for (int i = 0; i != stringLength; i++) {
+		stringContent[i] = str.stringContent[i];
 	}
 
 }
 MyString::~MyString() {
-	delete[] this->stringContent;
+	delete[] stringContent;
 }
 
+MyString& MyString::assign(const MyString& str) {
+	if (str.stringLength > stringLength) {
+		delete[] stringContent;
+	}
+	stringContent = new char[str.stringLength];
+	for (int i = 0; i < str.stringLength; i++) {
+		stringContent[i] = str.stringContent[i];
+	}
+	stringLength = str.stringLength;
+	return *this;
+}
+
+MyString& MyString::assign(const char* str) {
+	int length = strlen(str);
+	if (length > stringLength) {
+		delete[] stringContent;
+		stringContent = new char[length];
+	}
+	for (int i = 0; i < length; i++) {
+		stringContent[i] = str[i];
+	}
+	stringLength = length;
+	return *this;
+}
+
+
 int MyString::length() const {
-	return this->stringLength;
+	return stringLength;
 }
 
 void MyString::print() const{
-	for (int i = 0; i < this->stringLength; i++) {
-		cout << this->stringContent[i];
+	for (int i = 0; i < stringLength; i++) {
+		cout << stringContent[i];
 	}
 }
 
 void MyString::println() const{
-	for (int i = 0; i < this->stringLength; i++) {
-		cout << this->stringContent[i];
+	for (int i = 0; i < stringLength; i++) {
+		cout << stringContent[i];
 	}
 	cout << endl;
 }
