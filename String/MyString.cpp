@@ -28,6 +28,10 @@ MyString::~MyString() {
 	delete[] this->stringContent;
 }
 
+int MyString::length() const {
+	return this->stringLength;
+}
+
 void MyString::print() const{
 	for (int i = 0; i < this->stringLength; i++) {
 		cout << this->stringContent[i];
