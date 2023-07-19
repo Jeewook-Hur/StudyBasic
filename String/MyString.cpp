@@ -2,6 +2,7 @@
 #include<string>
 
 #include "MyString.h"
+using namespace std;
 
 MyString::MyString(char c) {
 	this->stringContent = new char[1];
@@ -11,6 +12,9 @@ MyString::MyString(char c) {
 MyString::MyString(const char* str) {
 	this->stringLength = strlen(str);
 	this->stringContent = new char[this->stringLength];
+	for (int i = 0; i < this->stringLength; i++) {
+		this->stringContent[i] = str[i];
+	}
 }
 MyString::MyString(const MyString& str) {
 	this->stringLength = str.stringLength;
@@ -22,4 +26,17 @@ MyString::MyString(const MyString& str) {
 }
 MyString::~MyString() {
 	delete[] this->stringContent;
+}
+
+void MyString::print() const{
+	for (int i = 0; i < this->stringLength; i++) {
+		cout << this->stringContent[i];
+	}
+}
+
+void MyString::println() const{
+	for (int i = 0; i < this->stringLength; i++) {
+		cout << this->stringContent[i];
+	}
+	cout << endl;
 }
