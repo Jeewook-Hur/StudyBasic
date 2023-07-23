@@ -8,10 +8,12 @@ MyString::MyString(char c) {
 	stringContent = new char[1];
 	stringContent[0] = c;
 	stringLength = 1;
+	memoryCapacity = 1;
 }
 MyString::MyString(const char* str) {
 	stringLength = strlen(str);
 	stringContent = new char[stringLength];
+	memoryCapacity = stringLength;
 	for (int i = 0; i < stringLength; i++) {
 		stringContent[i] = str[i];
 	}
@@ -19,6 +21,7 @@ MyString::MyString(const char* str) {
 MyString::MyString(const MyString& str) {
 	stringLength = str.stringLength;
 	stringContent = new char[stringLength];
+	memoryCapacity = stringLength;
 	for (int i = 0; i != stringLength; i++) {
 		stringContent[i] = str.stringContent[i];
 	}
