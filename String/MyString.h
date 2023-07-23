@@ -10,6 +10,8 @@ public:
 
 	MyString& assign(const MyString& str);
 	MyString& assign(const char* str);
+	int capacity();
+	void reserve(int size);
 
 	int length() const;
 	void print() const;
